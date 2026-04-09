@@ -1,13 +1,13 @@
 import { User } from '../../types/user';
 
 type Props = {
-  user?: User;
+  user: User;
 };
 
-export const UserInfo = ({ user }: Props) => {
+export const UserInfo = ({ user }: Props): JSX.Element => {
   return (
-    <a className="UserInfo" href={`mailto:${user?.email || ''}`}>
-      {user?.name || ''}
+    <a className="UserInfo" href={`mailto:${user.email}`}>
+      {user.name}
     </a>
   );
 };

@@ -1,23 +1,21 @@
-import { UserInfo } from '../UserInfo';
+import { UserInfo } from '../UserInfo/UserInfo';
 import { Todo } from '../../types/todo';
-import { User } from '../../types/user';
 
 type Props = {
   todo: Todo;
-  user?: User;
 };
 
-export const TodoInfo = ({ todo, user }: Props) => {
-  const todoCompleted = todo.completed
-    ? 'TodoInfo TodoInfo--completed'
-    : 'TodoInfo';
-
-  const shownUser = user || todo.user;
+export const TodoInfo = ({ todo }: Props): JSX.Element => {
+  const shownUser = todo.user;
 
   return (
-    <article data-id={todo.id} className={todoCompleted}>
+    <article
+      data-id={todo.id}
+      className={todo.completed ? 'TodoInfo TodoInfo--completed' : 'TodoInfo'}
+    >
       <h2 className="TodoInfo__title">{todo.title}</h2>
-      <UserInfo user={shownUser} />
+
+      {shownUser && <UserInfo user={shownUser} />}
     </article>
   );
 };

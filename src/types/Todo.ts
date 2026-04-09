@@ -1,9 +1,9 @@
 import { User } from './user';
 
-export type Todo = {
+export interface Todo {
   id: number;
-  title: string;
   userId: number;
+  title: string;
   completed: boolean;
-  user?: User;
-};
+  user: User;
+}

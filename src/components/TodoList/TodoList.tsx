@@ -1,20 +1,16 @@
-import { TodoInfo } from '../TodoInfo';
+import { TodoInfo } from '../TodoInfo/TodoInfo';
 import { Todo } from '../../types/todo';
-import { User } from '../../types/user';
 
 type Props = {
   todos: Todo[];
-  users?: User[];
 };
 
-export const TodoList = ({ todos, users = [] }: Props) => {
+export const TodoList = ({ todos }: Props): JSX.Element => {
   return (
-    <section className="TodoList">
-      {todos.map(todo => {
-        const foundUser = users.find(user => user.id === todo.userId);
-
-        return <TodoInfo key={todo.id} todo={todo} user={foundUser} />;
-      })}
-    </section>
+    <>
+      {todos.map((todo: Todo) => (
+        <TodoInfo key={todo.id} todo={todo} />
+      ))}
+    </>
   );
 };
